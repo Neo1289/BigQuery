@@ -25,6 +25,13 @@ def logging_info(func):
 
 credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 destination_table = "bitcoin.prices"
+logging.basicConfig(
+    filename='logfile.txt',  
+    level=logging.INFO, 
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 @logging_info
 def fetch_bitcoin_price() -> pd.DataFrame:
@@ -52,13 +59,6 @@ def fetch_transactions() -> pd.DataFrame:
     """
     Fetch transaction data from BigQuery.
     """
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-    file_handler = logging.FileHandler("bigquery_usage.log")
-    file_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
     client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
     query = """
@@ -76,7 +76,6 @@ def fetch_transactions() -> pd.DataFrame:
     df_transactions_count = results.to_dataframe()
     df_transactions_count['date_'] = df_transactions_count['date_'].astype(str)
     logger.info(f"Bytes processed: {query_job.total_bytes_processed}")
-    print(f"This query will process {query_job.total_bytes_processed} bytes.")
     return df_transactions_count
 
 @logging_info
@@ -119,6 +118,7 @@ def main()-> None:
         if_exists="replace" 
     )
 
+    logger.info(f"uploaded {len(table)} row(s) into bigquery")
 
 if __name__ == '__main__':
     main()
