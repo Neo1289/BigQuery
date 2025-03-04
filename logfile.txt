@@ -1,0 +1,9 @@
+2025-03-04 17:02:15,823 - __main__ - INFO - Bytes processed: 1288608
+2025-03-04 17:02:21,956 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
+2025-03-04 17:04:03,743 - __main__ - INFO - Bytes processed: 1288608
+2025-03-04 17:04:09,160 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
+2025-03-04 17:06:34,675 - __main__ - INFO - Bytes processed: 1288608
+2025-03-04 17:06:43,512 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
+2025-03-04 17:08:16,191 - __main__ - INFO - Bytes processed: 1288608
+2025-03-04 17:08:20,465 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
+2025-03-04 17:08:20,466 - __main__ - INFO - uploaded 366 row(s) into bigquery
