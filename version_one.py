@@ -51,6 +51,7 @@ def fetch_bitcoin_price() -> pd.DataFrame:
     prices = data.get('prices', [])
     df = pd.DataFrame(prices, columns=['timestamp', 'price'])
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms').dt.date.astype(str)
+    df = df.drop_duplicates(subset='timestamp', keep='first')
 
     return df
     
@@ -76,7 +77,33 @@ def fetch_transactions() -> pd.DataFrame:
     df_transactions_count = results.to_dataframe()
     df_transactions_count['date_'] = df_transactions_count['date_'].astype(str)
     logger.info(f"Bytes processed: {query_job.total_bytes_processed}")
+    print(f"Bytes processed: {query_job.total_bytes_processed}")
     return df_transactions_count
+
+@logging_info
+def get_dominance() -> pd.DataFrame:
+    """
+    get daily usdt and btc dominance
+    """
+    url = "https://api.coingecko.com/api/v3/global"
+    response = requests.get(url)
+    data = response.json().get("data", {})
+
+# Get today's date as a string
+    today_date = datetime.date.today().strftime("%Y-%m-%d")
+
+# Extract Bitcoin and USDT dominance (if available)
+    btc_dominance = data.get("market_cap_percentage", {}).get("btc")
+    usdt_dominance = data.get("market_cap_percentage", {}).get("usdt")
+
+# Create a DataFrame with the date and the dominance values
+    df = pd.DataFrame({
+        "date": [today_date],
+        "btc_dominance": [btc_dominance],
+        "usdt_dominance": [usdt_dominance]
+    })
+    
+    return df
 
 @logging_info
 def joining_tables() -> pd.DataFrame:
@@ -85,10 +112,12 @@ def joining_tables() -> pd.DataFrame:
     """
     df_transactions = fetch_transactions()
     df_price = fetch_bitcoin_price()
+    dominance = get_dominance()
 
-    joined_df = pd.merge(df_transactions,df_price, how='inner', left_on='date_', right_on='timestamp')
+    joined_df = pd.merge(df_transactions, df_price, how='inner', left_on='date_', right_on='timestamp')
+    d_df =  pd.merge(joined_df, dominance, how ='left', left_on= 'timestamp', right_on= 'date')
 
-    return joined_df
+    return d_df
     
 @logging_info
 def schema() -> list[dict]:
@@ -99,7 +128,9 @@ def schema() -> list[dict]:
         {'name': 'date_', 'type': 'STRING', 'description': 'The date of the transaction'},
         {'name': 'total_transactions', 'type': 'INT64', 'description': 'Total number of transactions'},
         {'name': 'timestamp', 'type': 'STRING', 'description': 'Timestamp of the price'},
-        {'name': 'price', 'type': 'FLOAT64', 'description': 'Closing price'}
+        {'name': 'price', 'type': 'FLOAT64', 'description': 'Closing price'},
+        {'name': 'btc_dominance', 'type': 'FLOAT64', 'description': 'Today reading'},
+        {'name': 'usdt_dominance', 'type': 'FLOAT64', 'description': 'Today reading'}
      ]
     
      return table_schema
