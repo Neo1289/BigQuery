@@ -2,7 +2,6 @@ import pandas as pd
 import datetime
 from datetime import timedelta
 import requests
-from google.oauth2 import service_account
 import pandas_gbq
 from google.cloud import bigquery
 from typing import Any
@@ -12,6 +11,7 @@ from datetime import timedelta
 import schedule
 import time
 import logging
+from google.oauth2 import service_account
 
 def logging_info(func):
     def wrapper(*args, **kwargs):
@@ -32,28 +32,6 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
-@logging_info
-def fetch_bitcoin_price() -> pd.DataFrame:
-    """
-    Fetch Bitcoin price data using the CoinGecko API.
-    """
-    url = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart'
-    params = {
-        'vs_currency': 'usd',
-        'days': '365',
-        'interval': 'daily'
-    }
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-
-    data = response.json()
-    prices = data.get('prices', [])
-    df = pd.DataFrame(prices, columns=['timestamp', 'price'])
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms').dt.date.astype(str)
-    df = df.drop_duplicates(subset='timestamp', keep='first')
-
-    return df
 
 @logging_info
 def fetch_transactions() -> pd.DataFrame:
@@ -80,31 +58,6 @@ def fetch_transactions() -> pd.DataFrame:
     logger.info(f"Bytes processed: {query_job.total_bytes_processed}")
     print(f"Bytes processed: {query_job.total_bytes_processed}")
     return df_transactions_count
-
-@logging_info
-def get_dominance() -> pd.DataFrame:
-    """
-    get daily usdt and btc dominance
-    """
-    url = "https://api.coingecko.com/api/v3/global"
-    response = requests.get(url)
-    data = response.json().get("data", {})
-
-    # Get today's date as a string
-    today_date = datetime.date.today().strftime("%Y-%m-%d")
-
-    # Extract Bitcoin and USDT dominance (if available)
-    btc_dominance = data.get("market_cap_percentage", {}).get("btc")
-    usdt_dominance = data.get("market_cap_percentage", {}).get("usdt")
-
-    # Create a DataFrame with the date and the dominance values
-    df = pd.DataFrame({
-        "date": [today_date],
-        "btc_dominance": [btc_dominance],
-        "usdt_dominance": [usdt_dominance]
-    })
-    
-    return df
 
 @logging_info
 def eth_transactions() -> pd.DataFrame:
@@ -135,15 +88,10 @@ def joining_tables() -> pd.DataFrame:
     Join transaction data and Bitcoin price data into a single DataFrame.
     """
     df_transactions = fetch_transactions()
-    df_price = fetch_bitcoin_price()
-    dominance = get_dominance()
     eth_data = eth_transactions()
 
-    joined_df = pd.merge(df_transactions, df_price, how='inner', left_on='date_', right_on='timestamp')
-    d_df = pd.merge(joined_df, dominance, how='left', left_on='timestamp', right_on='date')
-    e_df = pd.merge(d_df, eth_data, how='left', left_on='timestamp', right_on='eth_date')
-
-    return e_df
+    joined_df = pd.merge(df_transactions, eth_data, how='left', left_on='date_', right_on='eth_date')
+    return joined_df
 
 @logging_info
 def schema() -> list[dict]:
@@ -153,16 +101,12 @@ def schema() -> list[dict]:
     table_schema = [
         {'name': 'date_', 'type': 'STRING', 'description': 'The date of the transaction'},
         {'name': 'total_transactions', 'type': 'INT64', 'description': 'Total number of transactions'},
-        {'name': 'timestamp', 'type': 'STRING', 'description': 'Timestamp of the price'},
-        {'name': 'price', 'type': 'FLOAT64', 'description': 'Closing price'},
-        {'name': 'btc_dominance', 'type': 'FLOAT64', 'description': 'Today reading'},
-        {'name': 'usdt_dominance', 'type': 'FLOAT64', 'description': 'Today reading'},
         {'name': 'today_transaction', 'type': 'INT64', 'description': 'today eth transactions'}
     ]
     return table_schema
 
 @logging_info
-def main() -> None:
+def run_etl() -> None:
     table = joining_tables()
     table_schema = schema()
 

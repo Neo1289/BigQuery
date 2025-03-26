@@ -1,29 +1,5 @@
-2025-03-04 17:02:15,823 - __main__ - INFO - Bytes processed: 1288608
-2025-03-04 17:02:21,956 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-04 17:04:03,743 - __main__ - INFO - Bytes processed: 1288608
-2025-03-04 17:04:09,160 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-04 17:06:34,675 - __main__ - INFO - Bytes processed: 1288608
-2025-03-04 17:06:43,512 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-04 17:08:16,191 - __main__ - INFO - Bytes processed: 1288608
-2025-03-04 17:08:20,465 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-04 17:08:20,466 - __main__ - INFO - uploaded 366 row(s) into bigquery
-2025-03-07 16:42:04,055 - __main__ - INFO - Bytes processed: 1299072
-2025-03-07 16:42:08,465 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-07 16:42:08,465 - __main__ - INFO - uploaded 366 row(s) into bigquery
-2025-03-07 16:55:46,338 - __main__ - INFO - Bytes processed: 1299192
-2025-03-07 16:55:52,511 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-07 16:55:52,511 - __main__ - INFO - uploaded 365 row(s) into bigquery
-2025-03-07 17:15:18,876 - __main__ - INFO - Bytes processed: 1299192
-2025-03-07 17:15:23,015 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-07 17:15:23,015 - __main__ - INFO - uploaded 365 row(s) into bigquery
-2025-03-22 17:01:17,512 - __main__ - INFO - Bytes processed: 1351728
-2025-03-22 17:01:25,408 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-22 17:01:25,408 - __main__ - INFO - uploaded 365 row(s) into bigquery
-2025-03-22 17:58:11,225 - __main__ - INFO - Bytes processed: 1351920
-2025-03-22 17:58:15,042 - __main__ - INFO - Bytes processed: 11099376
-2025-03-22 17:58:20,317 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-22 17:58:20,317 - __main__ - INFO - uploaded 365 row(s) into bigquery
-2025-03-22 17:59:50,463 - __main__ - INFO - Bytes processed: 1351920
-2025-03-22 17:59:53,891 - __main__ - INFO - Bytes processed: 11099376
-2025-03-22 17:59:58,821 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-22 17:59:58,821 - __main__ - INFO - uploaded 365 row(s) into bigquery
+2025-03-26 16:13:09,418 - scripts.version_two - INFO - Bytes processed: 12426912
+2025-03-26 16:13:33,728 - scripts.version_two - INFO - Bytes processed: 1366296
+2025-03-26 16:13:36,835 - scripts.version_two - INFO - Bytes processed: 12426912
+2025-03-26 16:13:42,273 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
+2025-03-26 16:13:42,274 - scripts.version_two - INFO - uploaded 366 row(s) into bigquery
