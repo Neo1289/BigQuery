@@ -1,4 +1,0 @@
-2025-03-26 15:47:10,712 - __main__ - INFO - Bytes processed: 1366296
-2025-03-26 15:47:14,269 - __main__ - INFO - Bytes processed: 11917840
-2025-03-26 15:47:18,956 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-03-26 15:47:18,957 - __main__ - INFO - uploaded 365 row(s) into bigquery

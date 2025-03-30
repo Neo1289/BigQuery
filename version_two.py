@@ -41,14 +41,12 @@ def fetch_transactions() -> pd.DataFrame:
     client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
     query = """
-     SELECT 
+      SELECT 
         DATE(timestamp) AS date_,
         SUM(transaction_count) AS total_transactions
      FROM `bigquery-public-data.crypto_bitcoin.blocks`
      WHERE DATE(timestamp_month) >= DATE_SUB(DATE_TRUNC(CURRENT_DATE(), MONTH), INTERVAL 12 MONTH)
-       AND timestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 365 DAY) AND CURRENT_TIMESTAMP()
      GROUP BY 1
-     ORDER BY 1
     """
     query_job = client.query(query)
     results = query_job.result()
