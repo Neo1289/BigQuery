@@ -1,5 +1,6 @@
-2025-03-26 16:13:09,418 - scripts.version_two - INFO - Bytes processed: 12426912
-2025-03-26 16:13:33,728 - scripts.version_two - INFO - Bytes processed: 1366296
-2025-03-26 16:13:36,835 - scripts.version_two - INFO - Bytes processed: 12426912
-2025-03-26 16:13:42,273 - pandas_gbq.gbq - INFO - 366 out of 366 rows loaded.
-2025-03-26 16:13:42,274 - scripts.version_two - INFO - uploaded 366 row(s) into bigquery
+2025-03-30 18:25:00,743 - scripts.bitcoin_transactions - INFO - Bytes processed: 1380360
+2025-03-30 18:25:04,565 - pandas_gbq.gbq - INFO - 395 out of 395 rows loaded.
+2025-03-30 18:25:04,566 - scripts.bitcoin_transactions - INFO - uploaded 395 row(s) into bigquery
+2025-03-30 18:27:25,028 - scripts.bitcoin_transactions - INFO - Bytes processed: 1380360
+2025-03-30 18:27:29,314 - pandas_gbq.gbq - INFO - 395 out of 395 rows loaded.
+2025-03-30 18:27:29,314 - scripts.bitcoin_transactions - INFO - uploaded 395 row(s) into bigquery
