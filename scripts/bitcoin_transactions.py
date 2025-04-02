@@ -6,7 +6,7 @@ import logging
 from google.oauth2 import service_account
 
 credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
-destination_table = "bitcoin.data"
+destination_table = "bitcoin.transactions"
 logging.basicConfig(
     filename='logfile.txt',  
     level=logging.INFO, 
