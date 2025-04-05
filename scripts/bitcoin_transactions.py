@@ -7,19 +7,9 @@ from google.oauth2 import service_account
 
 credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 destination_table = "bitcoin.transactions"
-logging.basicConfig(
-    filename='logfile.txt',  
-    level=logging.INFO, 
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 def fetch_transactions() -> pd.DataFrame:
-    """
-    Fetch transaction data from BigQuery.
-    """
+   
     client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
     query = """
@@ -35,7 +25,7 @@ def fetch_transactions() -> pd.DataFrame:
     df_transactions_count = results.to_dataframe()
     df_transactions_count['date_'] = df_transactions_count['date_'].astype(str)
 
-    logger.info(f"Bytes processed: {query_job.total_bytes_processed}")
+    fetch_transactions.__doc__ = f"Bytes processed: {query_job.total_bytes_processed}"
     return df_transactions_count
 
 def schema() -> list[dict]:
@@ -61,7 +51,7 @@ def run_etl() -> None:
         if_exists="replace" 
     )
 
-    logger.info(f"uploaded {len(table)} row(s) into bigquery")
+    run_etl.__doc__ = f"fetching the last 365 days bitcoin transactions, added {len(table)} rows."
 
 if __name__ == '__main__':
     main()

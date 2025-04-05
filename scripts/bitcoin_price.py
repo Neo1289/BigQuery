@@ -9,14 +9,6 @@ from google.oauth2 import service_account
 
 credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 destination_table = "bitcoin.price"
-logging.basicConfig(
-    filename='logfile.txt',  
-    level=logging.INFO, 
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 def fetch_bitcoin_price() -> pd.DataFrame:
     """
@@ -50,6 +42,7 @@ def schema() -> list[dict]:
     return table_schema
 
 def run_etl() -> None:
+   
     table = fetch_bitcoin_price()
     table_schema = schema()
 
@@ -62,7 +55,7 @@ def run_etl() -> None:
         if_exists="replace" 
     )
 
-    logger.info(f"uploaded {len(table)} row(s) into bigquery")
+    run_etl.__doc__ = f"fetching the last 365 days bitcoin prices, added {len(table)} rows."
 
 if __name__ == '__main__':
     main()
