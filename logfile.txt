@@ -1,18 +1,6 @@
-2025-03-30 18:25:00,743 - scripts.bitcoin_transactions - INFO - Bytes processed: 1380360
-2025-03-30 18:25:04,565 - pandas_gbq.gbq - INFO - 395 out of 395 rows loaded.
-2025-03-30 18:25:04,566 - scripts.bitcoin_transactions - INFO - uploaded 395 row(s) into bigquery
-2025-03-30 18:27:25,028 - scripts.bitcoin_transactions - INFO - Bytes processed: 1380360
-2025-03-30 18:27:29,314 - pandas_gbq.gbq - INFO - 395 out of 395 rows loaded.
-2025-03-30 18:27:29,314 - scripts.bitcoin_transactions - INFO - uploaded 395 row(s) into bigquery
-2025-04-02 16:36:53,873 - scripts.bitcoin_transactions - INFO - Bytes processed: 1281432
-2025-04-02 16:36:58,327 - pandas_gbq.gbq - INFO - 367 out of 367 rows loaded.
-2025-04-02 16:36:58,327 - scripts.bitcoin_transactions - INFO - uploaded 367 row(s) into bigquery
-2025-04-02 16:37:56,645 - scripts.bitcoin_transactions - INFO - Bytes processed: 1281432
-2025-04-02 16:38:02,235 - pandas_gbq.gbq - INFO - 367 out of 367 rows loaded.
-2025-04-02 16:38:02,235 - scripts.bitcoin_transactions - INFO - uploaded 367 row(s) into bigquery
-2025-04-02 16:38:05,662 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-04-02 16:38:33,704 - scripts.bitcoin_transactions - INFO - Bytes processed: 1281432
-2025-04-02 16:38:36,718 - pandas_gbq.gbq - INFO - 367 out of 367 rows loaded.
-2025-04-02 16:38:36,719 - scripts.bitcoin_transactions - INFO - uploaded 367 row(s) into bigquery
-2025-04-02 16:38:41,809 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-04-02 16:38:41,810 - scripts.bitcoin_price - INFO - uploaded 365 row(s) into bigquery
+2025-04-05 17:45:43,386 - pandas_gbq.gbq - INFO - 370 out of 370 rows loaded.
+2025-04-05 17:45:48,982 - pandas_gbq.gbq - INFO - 370 out of 370 rows loaded.
+2025-04-05 17:45:48,982 - __main__ - INFO - The type of the None singleton.
+2025-04-05 17:45:52,581 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-04-05 17:45:57,951 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-04-05 17:45:57,951 - __main__ - INFO - The type of the None singleton.
