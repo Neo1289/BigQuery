@@ -5,10 +5,9 @@ from typing import Any
 import logging
 from google.oauth2 import service_account
 
-credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 destination_table = "bitcoin.transactions"
 
-def fetch_transactions() -> pd.DataFrame:
+def fetch_transactions(credentials) -> pd.DataFrame:
    
     client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
@@ -38,8 +37,8 @@ def schema() -> list[dict]:
     ]
     return table_schema
 
-def run_etl() -> None:
-    table = fetch_transactions()
+def run_etl(credentials) -> None:
+    table = fetch_transactions(credentials)
     table_schema = schema()
 
     pandas_gbq.to_gbq(

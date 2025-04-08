@@ -1,4 +1,4 @@
-2025-04-08 19:33:47,064 - pandas_gbq.gbq - INFO - 373 out of 373 rows loaded.
-2025-04-08 19:33:47,064 - __main__ - INFO - fetching the last 365 days bitcoin transactions, added 373 rows.
-2025-04-08 19:33:50,887 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-04-08 19:33:50,888 - __main__ - INFO - fetching the last 365 days bitcoin prices, added 365 rows.
+2025-04-08 19:44:49,892 - pandas_gbq.gbq - INFO - 373 out of 373 rows loaded.
+2025-04-08 19:44:49,893 - __main__ - INFO - fetching the last 365 days bitcoin transactions, added 373 rows.
+2025-04-08 19:44:54,025 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-04-08 19:44:54,026 - __main__ - INFO - fetching the last 365 days bitcoin prices, added 365 rows.
