@@ -7,7 +7,6 @@ import os
 import logging
 from google.oauth2 import service_account
 
-credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 destination_table = "bitcoin.price"
 
 def fetch_bitcoin_price() -> pd.DataFrame:
@@ -41,7 +40,7 @@ def schema() -> list[dict]:
     ]
     return table_schema
 
-def run_etl() -> None:
+def run_etl(credentials) -> None:
    
     table = fetch_bitcoin_price()
     table_schema = schema()
