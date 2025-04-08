@@ -1,6 +1,4 @@
-2025-04-05 17:45:43,386 - pandas_gbq.gbq - INFO - 370 out of 370 rows loaded.
-2025-04-05 17:45:48,982 - pandas_gbq.gbq - INFO - 370 out of 370 rows loaded.
-2025-04-05 17:45:48,982 - __main__ - INFO - The type of the None singleton.
-2025-04-05 17:45:52,581 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-04-05 17:45:57,951 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
-2025-04-05 17:45:57,951 - __main__ - INFO - The type of the None singleton.
+2025-04-08 19:33:47,064 - pandas_gbq.gbq - INFO - 373 out of 373 rows loaded.
+2025-04-08 19:33:47,064 - __main__ - INFO - fetching the last 365 days bitcoin transactions, added 373 rows.
+2025-04-08 19:33:50,887 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-04-08 19:33:50,888 - __main__ - INFO - fetching the last 365 days bitcoin prices, added 365 rows.
