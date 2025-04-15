@@ -2,6 +2,8 @@ import os
 import requests
 import pandas as pd
 from datetime import datetime
+import numpy as np
+from typing import List, Dict, TypedDict
 
 # Read API key
 with open('../fred_api_key.txt', 'r') as f:
@@ -37,10 +39,11 @@ def get_categories(category_id=0):
     params = {"category_id": category_id}
     result = fred_request(endpoint, params)
 
-    for obj in result['categories']:
-        for key in obj.items():
-            print(key[0])
-        
+    for category_dict in result['categories']:
+        category_id = category_dict['id']
+        category_name = category_dict['name']
+        parent_id = category_dict['parent_id']
+
+        print(f"  ID: {category_id}, Name: '{category_name}', Parent ID: {parent_id}")
     
-# Run the function to see root categories
 get_categories()
