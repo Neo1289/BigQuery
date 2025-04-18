@@ -13,7 +13,8 @@ logger.setLevel(logging.INFO)
 
 from scripts import ( 
     bitcoin_transactions,
-    bitcoin_price
+    bitcoin_price,
+    fred
     )
 
 
@@ -22,7 +23,8 @@ def main() -> None:
 
     jobs = [
         bitcoin_transactions,
-        bitcoin_price
+        bitcoin_price,
+        fred
     ]
     
     for job in jobs:
