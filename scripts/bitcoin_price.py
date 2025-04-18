@@ -54,7 +54,7 @@ def run_etl(credentials) -> None:
         if_exists="replace" 
     )
 
-    run_etl.__doc__ = f"fetching the last 365 days bitcoin prices, added {len(table)} rows."
+    run_etl.__doc__ = f"fetching from {fetch_bitcoin_price.__name__}, added {len(table)} rows."
 
 if __name__ == '__main__':
     main()
