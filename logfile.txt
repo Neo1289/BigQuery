@@ -12,3 +12,9 @@
 2025-04-18 17:28:23,768 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
 2025-04-18 17:28:29,692 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
 2025-04-18 17:28:29,692 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
+2025-04-23 16:02:17,376 - pandas_gbq.gbq - INFO - 388 out of 388 rows loaded.
+2025-04-23 16:02:17,377 - __main__ - INFO - fetching data from fetch_transactions, added 388 rows.
+2025-04-23 16:02:21,953 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-04-23 16:02:21,953 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
+2025-04-23 16:02:24,762 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
+2025-04-23 16:02:24,762 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
