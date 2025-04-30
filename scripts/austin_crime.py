@@ -16,8 +16,8 @@ def get_crimes(credentials) -> pd.DataFrame:
 
     query = """
       SELECT 
-          TIMESTAMP_TRUNC(clearance_date, MONTH) AS month,
-          COUNT(unique_key AS total_crimes
+          DATE(TIMESTAMP_TRUNC(clearance_date, MONTH)) AS month,
+          COUNT(unique_key) AS total_crimes
       FROM bigquery-public-data.austin_crime.crime
         GROUP BY 1
         ORDER BY 1
@@ -25,9 +25,8 @@ def get_crimes(credentials) -> pd.DataFrame:
     query_job = client.query(query)
     results = query_job.result()
     df_transactions_count = results.to_dataframe()
-    df_transactions_count['date_'] = df_transactions_count['date_'].astype(str)
 
-    fetch_transactions.__doc__ = f"Bytes processed: {query_job.total_bytes_processed}"
+    get_crimes.__doc__ = f"Bytes processed: {query_job.total_bytes_processed}"
     return df_transactions_count
 
 def schema() -> list[dict]:
@@ -41,25 +40,29 @@ def schema() -> list[dict]:
     return table_schema
 
 def run_etl(credentials) -> None:
-   
+    
+    client = bigquery.Client(credentials=credentials, project=credentials.project_id)
     table = get_crimes(credentials)
     table_schema = schema()
 
-    table = pandas_gbq.to_gbq(
-        dataframe=table,
-        destination_table=destination_table,
-        project_id="connection-123",
-        table_schema=table_schema,
-        credentials=credentials,
-        if_exists="replace" 
+    job_config = bigquery.LoadJobConfig(
+        schema=table_schema,
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+        time_partitioning=bigquery.TimePartitioning(
+            type_=bigquery.TimePartitioningType.DAY,
+            field="month" 
+        )
     )
 
-    table.time_partitioning = bigquery.TimePartitioning(
-        type = bigquery.TimePartitioningType.DAY,
-        field = "month"
+    table_ref = client.dataset("bitcoin").table(destination_table)
+    
+    job = client.load_table_from_dataframe(
+        table, 
+        table_ref, 
+        job_config=job_config
     )
-
-    client.create_table(table=table)
+    
+    job.result()
 
     run_etl.__doc__ = f"fetching from {get_crimes.__name__}, added {len(table)} rows."
 
