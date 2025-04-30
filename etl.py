@@ -12,10 +12,10 @@ logger.setLevel(logging.INFO)
 
 
 from scripts import ( 
+    austin_crime,
     bitcoin_transactions,
     bitcoin_price,
-    fred,
-    austin_crime
+    fred
     )
 
 
@@ -23,10 +23,10 @@ def main() -> None:
     credentials = service_account.Credentials.from_service_account_file("connection-123-892e002c2def.json")
 
     jobs = [
+        austin_crime,
         bitcoin_transactions,
         bitcoin_price,
-        fred,
-        austin_crime
+        fred
     ]
     
     for job in jobs:
