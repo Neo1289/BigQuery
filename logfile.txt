@@ -68,3 +68,28 @@
 2025-04-30 17:31:00,536 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
 2025-04-30 17:31:04,120 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
 2025-04-30 17:31:04,120 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
+2025-05-06 16:52:38,280 - __main__ - INFO - fetching from get_crimes, added 40 rows.
+2025-05-06 16:52:44,697 - pandas_gbq.gbq - INFO - 371 out of 371 rows loaded.
+2025-05-06 16:52:44,697 - __main__ - INFO - fetching data from fetch_transactions, added 371 rows.
+2025-05-06 16:52:47,545 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-05-06 16:52:47,546 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
+2025-05-06 16:52:50,877 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
+2025-05-06 16:52:50,877 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
+2025-05-06 17:04:40,500 - __main__ - INFO - fetching from get_crimes, added 40 rows.
+2025-05-06 17:04:46,203 - pandas_gbq.gbq - INFO - 371 out of 371 rows loaded.
+2025-05-06 17:04:46,203 - __main__ - INFO - fetching data from fetch_transactions, added 371 rows.
+2025-05-06 17:04:49,190 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-05-06 17:04:49,191 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
+2025-05-06 17:04:52,397 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
+2025-05-06 17:04:52,397 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
+2025-05-06 17:05:36,126 - __main__ - INFO - fetching from get_crimes, added 40 rows.
+2025-05-06 17:05:36,127 - __main__ - INFO - C:\Users\nrade\Desktop\BigQuery\scripts\austin_crime.py
+2025-05-06 17:05:42,200 - pandas_gbq.gbq - INFO - 371 out of 371 rows loaded.
+2025-05-06 17:05:42,200 - __main__ - INFO - fetching data from fetch_transactions, added 371 rows.
+2025-05-06 17:05:42,200 - __main__ - INFO - C:\Users\nrade\Desktop\BigQuery\scripts\bitcoin_transactions.py
+2025-05-06 17:05:46,940 - pandas_gbq.gbq - INFO - 365 out of 365 rows loaded.
+2025-05-06 17:05:46,940 - __main__ - INFO - fetching from fetch_bitcoin_price, added 365 rows.
+2025-05-06 17:05:46,940 - __main__ - INFO - C:\Users\nrade\Desktop\BigQuery\scripts\bitcoin_price.py
+2025-05-06 17:05:50,089 - pandas_gbq.gbq - INFO - 27 out of 27 rows loaded.
+2025-05-06 17:05:50,090 - __main__ - INFO - fetching data from get_inflation_data, added 27 rows.
+2025-05-06 17:05:50,090 - __main__ - INFO - C:\Users\nrade\Desktop\BigQuery\scripts\fred.py

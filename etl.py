@@ -32,6 +32,7 @@ def main() -> None:
     for job in jobs:
         job.run_etl(credentials)
         logger.info(job.run_etl.__doc__)
+        logger.info(job.__file__)
         
 if __name__ == "__main__":
     main()
